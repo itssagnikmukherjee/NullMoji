@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Toaster } from "@/components/ui/sonner";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import EncodePanel from './components/EncodePanel';
 import DecodePanel from './components/DecodePanel';
 import Footer from './components/Footer';
+import { WhatIsAccordion, HowItWorksAccordion } from './components/NullMojiAccordions';
+import SplitText from './components/SplitText';
+import TextType from './components/TextType';
+import DecryptedText from './components/DecryptedText';
 import './App.css';
 
 
 function App() {
+  const [whatIsOpen, setWhatIsOpen] = useState(false);
+  const [howWorksOpen, setHowWorksOpen] = useState(false);
+  const [showMoji, setShowMoji] = useState(false);
+
+  useEffect(() => {
+    // "Null" has 4 letters, 8 iterations per letter, 25ms speed
+    // Total time: 4 letters * 8 iterations * 25ms = ~800ms
+    const timer = setTimeout(() => {
+      setShowMoji(true);
+    }, 1200); // Wait 1.2 seconds for Null to complete
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row gap-8 items-start px-4 lg:px-8 py-8 pb-8">
@@ -17,17 +36,56 @@ function App() {
           <div className="flex-1 flex flex-col w-full">
             <div className="text-center lg:text-left">
               <div className="text-6xl lg:text-7xl font-bold tracking-wide mb-4">
-                <span className="text-3xl lg:text-7xl mb-6 font-light"><span className="opacity-50">٩</span>(｡•́‿•̀｡)<span className="opacity-50">۶</span></span>
+                <div className="text-3xl lg:text-7xl mb-6 font-light">
+                  <TextType
+                    texts={["(｡•́‿•̀｡)"]}
+                    typingSpeed={100}
+                    showCursor={true}
+                    typeOnce={true}
+                  />
+                </div>
                 <div className="mt-6">
-                  <span className="text-7xl lg:text-7xl text-[#E5C890]">Null</span>
-                  <span className="bg-gradient-to-r from-primary via-foreground to-primary bg-clip-text text-transparent">Moji</span>
+                  <DecryptedText
+                    text="Null"
+                    className="text-6xl lg:text-6xl text-[#E5C890]"
+                    encryptedClassName="text-7xl lg:text-7xl text-[#E5C890]"
+                    speed={25}
+                    maxIterations={8}
+                    animateOn="view"
+                    sequential={true}
+                    revealDirection="start"
+                  />
+                  {showMoji && (
+                    <DecryptedText
+                      text="Moji"
+                      className="text-6xl lg:text-6xl bg-gradient-to-r from-primary via-foreground to-primary bg-clip-text text-transparent"
+                      encryptedClassName="text-7xl lg:text-7xl text-gray-400/40"
+                      speed={25}
+                      maxIterations={8}
+                      animateOn="view"
+                      sequential={true}
+                      revealDirection="start"
+                    />
+                  )}
                 </div>
               </div>
             </div>
             {/* Tagline */}
             <div className="text-muted-foreground text-sm lg:text-base space-y-2 max-w-xs mb-10">
               <p className="flex items-start gap-2">
-                <span className="text-xl">Hide secrets in plain text</span>
+                <SplitText
+                  text="Hide secrets in plain text"
+                  className="text-xl text-muted-foreground"
+                  delay={50}
+                  duration={1.25}
+                  ease="power3.out"
+                  splitType="chars"
+                  from={{ opacity: 0, y: 40 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                  rootMargin="-100px"
+                  textAlign="left"
+                />
               </p>
             </div>
             {/* Description */}
@@ -35,11 +93,21 @@ function App() {
             <div className="text-muted-foreground text-sm lg:text-base space-y-2 max-w-xs">
               <p className="flex items-start gap-2">
                 <i className="fas fa-question text-[#E5C890] mt-1"></i>
-                <span className="cursor-pointer hover:text-primary transition-colors duration-300 underline">What is NullMoji ?</span>
+                <span
+                  onClick={() => setWhatIsOpen(true)}
+                  className="cursor-pointer hover:text-primary transition-colors duration-300 underline"
+                >
+                  What is NullMoji ?
+                </span>
               </p>
               <p className="flex items-start gap-2">
                 <i className="fas fa-gear text-[#E5C890] mt-1"></i>
-                <span className="cursor-pointer hover:text-primary transition-colors duration-300 underline">How NullMoji works ?</span>
+                <span
+                  onClick={() => setHowWorksOpen(true)}
+                  className="cursor-pointer hover:text-primary transition-colors duration-300 underline"
+                >
+                  How NullMoji works ?
+                </span>
               </p>
             </div>
           </div>
@@ -54,7 +122,7 @@ function App() {
             <p className="flex items-start gap-2">
               <i className="fab fa-github text-[#E5C890] mt-1"></i>
               <a
-                href="https://github.com/sagnik17/nullmoji"
+                href="https://github.com/itssagnikmukherjee/nullmoji"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline cursor-pointer hover:text-primary transition-colors duration-300"
@@ -107,6 +175,36 @@ function App() {
         {/* Footer */}
       </div>
       <Footer />
+
+      {/* What is NullMoji Dialog */}
+      <Dialog open={whatIsOpen} onOpenChange={setWhatIsOpen}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl">What is NullMoji?</DialogTitle>
+            <DialogDescription>
+              Learn about NullMoji's steganography capabilities
+            </DialogDescription>
+          </DialogHeader>
+          <div className="mt-4">
+            <WhatIsAccordion />
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* How NullMoji Works Dialog */}
+      <Dialog open={howWorksOpen} onOpenChange={setHowWorksOpen}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl">How NullMoji Works?</DialogTitle>
+            <DialogDescription>
+              Understand the encoding and decoding process
+            </DialogDescription>
+          </DialogHeader>
+          <div className="mt-4">
+            <HowItWorksAccordion />
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Toaster />
     </>

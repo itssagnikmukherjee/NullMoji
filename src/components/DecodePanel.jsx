@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { decryptMessage } from '../utils/crypto';
 import { extractHiddenBinary, binaryToText } from '../utils/steganography';
+import DecryptedText from './DecryptedText';
 
 const DecodePanel = () => {
     const [input, setInput] = useState('');
@@ -116,7 +117,19 @@ const DecodePanel = () => {
                         {resultType === 'warning' && <i className="fas fa-triangle-exclamation text-xl"></i>}
                         {resultType === 'success' && <i className="fas fa-circle-check text-xl"></i>}
                     </div>
-                    {result}
+                    {resultType === 'success' ? (
+                        <DecryptedText
+                            text={result}
+                            className="text-green-400"
+                            encryptedClassName="text-green-300/40"
+                            speed={30}
+                            maxIterations={15}
+                            animateOn="view"
+                            sequential={false}
+                        />
+                    ) : (
+                        result
+                    )}
                 </div>
             )}
         </div>
