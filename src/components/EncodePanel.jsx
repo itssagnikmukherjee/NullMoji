@@ -245,7 +245,7 @@ const EncodePanel = () => {
     };
 
     return (
-        <div className="w-full p-6 lg:p-8 space-y-6 animate-fadeIn min-h-[600px] overflow-hidden">
+        <div className="w-full p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6 animate-fadeIn min-h-[500px] sm:min-h-[600px] overflow-hidden">
             {/* Secret Text Input */}
             <div className="space-y-2">
                 <Label className="flex items-center gap-2 text-base">
@@ -387,7 +387,7 @@ const EncodePanel = () => {
                     </div>
 
                     {/* Kaomoji Selection */}
-                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                    <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:grid-cols-4">
                         {kaomojisForCategory.map((k, index) => (
                             <Button
                                 key={`${k}-${index}`}
@@ -426,37 +426,37 @@ const EncodePanel = () => {
                         <i className="fas fa-paper-plane text-[#E5C890]"></i>
                         Share with Friends via
                     </Label>
-                    <div className="grid grid-cols-4 gap-3">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
                         <Button
                             variant="outline"
-                            className="h-24 flex flex-col gap-1 hover:bg-slate-50 transition-all"
+                            className="h-20 sm:h-24 flex flex-col gap-1 hover:bg-slate-50 transition-all"
                             onClick={() => shareVia('whatsapp')}
                         >
-                            <i className="fab fa-whatsapp text-2xl"></i>
+                            <i className="fab fa-whatsapp text-xl sm:text-2xl"></i>
                             <span className="text-xs">WhatsApp</span>
                         </Button>
                         <Button
                             variant="outline"
-                            className="h-24 flex flex-col gap-1 hover:bg-slate-50 transition-all"
+                            className="h-20 sm:h-24 flex flex-col gap-1 hover:bg-slate-50 transition-all"
                             onClick={() => shareVia('telegram')}
                         >
-                            <i className="fab fa-telegram text-2xl"></i>
+                            <i className="fab fa-telegram text-xl sm:text-2xl"></i>
                             <span className="text-xs">Telegram</span>
                         </Button>
                         <Button
                             variant="outline"
-                            className="h-24 flex flex-col gap-1 hover:bg-slate-50 transition-all"
+                            className="h-20 sm:h-24 flex flex-col gap-1 hover:bg-slate-50 transition-all"
                             onClick={() => shareVia('twitter')}
                         >
-                            <i className="fab fa-twitter text-2xl"></i>
+                            <i className="fab fa-twitter text-xl sm:text-2xl"></i>
                             <span className="text-xs">Twitter</span>
                         </Button>
                         <Button
                             variant="outline"
-                            className="h-24 flex flex-col gap-1 hover:bg-slate-50 transition-all"
+                            className="h-20 sm:h-24 flex flex-col gap-1 hover:bg-slate-50 transition-all"
                             onClick={() => shareVia('email')}
                         >
-                            <i className="fas fa-envelope text-2xl"></i>
+                            <i className="fas fa-envelope text-xl sm:text-2xl"></i>
                             <span className="text-xs">Email</span>
                         </Button>
                     </div>

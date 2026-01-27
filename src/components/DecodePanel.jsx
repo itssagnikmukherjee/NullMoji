@@ -59,7 +59,7 @@ const DecodePanel = () => {
     };
 
     return (
-        <div className="w-full p-6 lg:p-8 space-y-6 animate-fadeIn min-h-[600px] overflow-hidden">
+        <div className="w-full p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6 animate-fadeIn min-h-[500px] sm:min-h-[600px] overflow-hidden">
             {/* Paste Input */}
             <div className="space-y-2">
                 <Label className="flex items-center gap-2 text-base">
