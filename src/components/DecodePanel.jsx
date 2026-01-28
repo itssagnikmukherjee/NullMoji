@@ -70,6 +70,11 @@ const DecodePanel = () => {
                     rows={4}
                     placeholder="Paste text here..."
                     value={input}
+                    autoComplete="off"
+                    autoCorrect="off"
+                    autoCapitalize="off"
+                    spellCheck="false" 
+                    data-form-type="other"
                     onChange={(e) => setInput(e.target.value)}
                     className="text-base resize-none border-white/20 hover:border-white/30 focus-visible:border-primary focus-visible:ring-0 focus-visible:ring-offset-0"
                 />
