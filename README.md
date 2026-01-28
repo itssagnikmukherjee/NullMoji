@@ -42,7 +42,7 @@ It encrypts your message and invisibly embeds it inside innocent-looking kaomoji
 
 1.  **Clone the repository**
     ```bash
-    git clone [https://github.com/itssagnikmukherjee/NullMoji.git](https://github.com/itssagnikmukherjee/NullMoji.git)
+    git clone https://github.com/itssagnikmukherjee/NullMoji.git
     cd NullMoji
     ```
 
