@@ -37,31 +37,32 @@ It encrypts your message and invisibly embeds it inside innocent-looking kaomoji
 | **Carrier** | `(^_^)` | `(^_^)` |
 | **Result** | `(^` + `[Invisible Payload]` + `_^)` | **`(^_^)`** |
 
-## <a id="setup"></a>Setup ⚙️
+# <a id="setup"></a>Setup ⚙️
 
-1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/itssagnikmukherjee/NullMoji.git
-    cd NullMoji
-    ```
+1.  **Clone the repository**
+    ```bash
+    git clone [https://github.com/itssagnikmukherjee/NullMoji.git](https://github.com/itssagnikmukherjee/NullMoji.git)
+    cd NullMoji
+    ```
 
-2.  **Install dependencies**
-    ```bash
-    npm install
-    # or
-    yarn install
-    ```
+2.  **Install dependencies**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-3.  **Run the development server**
-    ```bash
-    npm run dev
-    # or
-    yarn dev
-    ```
+3.  **Run the development server**
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    ```
 
-4.  Open `http://localhost:5173` in your browser.
+4.  Open `http://localhost:5173` in your browser.
 
 ---
+
 ## <a id="credits"></a>Credits 🙏
 * [Kaomoji](https://kaomoji.ru/en/) — For the endless library of expressions.
 * [shadcn/ui](https://ui.shadcn.com/) — For the razor-sharp, "coolest" UI architecture.
