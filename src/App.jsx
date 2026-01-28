@@ -20,11 +20,9 @@ function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    // "Null" has 4 letters, 8 iterations per letter, 25ms speed
-    // Total time: 4 letters * 8 iterations * 25ms = ~800ms
     const timer = setTimeout(() => {
       setShowMoji(true);
-    }, 1200); // Wait 1.2 seconds for Null to complete
+    }, 1200);
 
     return () => clearTimeout(timer);
   }, []);
@@ -123,10 +121,10 @@ function App() {
           <div className="flex-1 flex flex-col w-full">
             <div className="text-left">
               <div className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-wide mb-3 sm:mb-4">
-                <div className="text-5xl sm:text-6xl md:text-7xl mb-4 sm:mb-6 font-light">
+                <div className="text-5xl sm:text-6xl md:text-6xl mb-4 sm:mb-6 font-light">
                   <TextType
-                    texts={["(｡•́‿•̀｡)"]}
-                    typingSpeed={100}
+                    texts={["ᕕ( ᐛ )ᕗ"]}
+                    typingSpeed={200}
                     showCursor={true}
                     typeOnce={true}
                   />
@@ -134,7 +132,7 @@ function App() {
                 <div className="mt-4 sm:mt-6">
                   <DecryptedText
                     text="Null"
-                    className="text-6xl sm:text-6xl md:text-6xl text-[#E5C890]"
+                    className="text-6xl sm:text-7xl md:text-6xl text-[#E5C890]"
                     encryptedClassName="text-7xl sm:text-7xl md:text-6xl text-[#E5C890]"
                     speed={25}
                     maxIterations={8}

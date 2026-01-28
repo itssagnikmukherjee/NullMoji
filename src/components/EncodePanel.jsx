@@ -257,7 +257,7 @@ const EncodePanel = () => {
                     placeholder="Type secret message here..."
                     value={secret}
                     onChange={(e) => setSecret(e.target.value)}
-                    className="text-base"
+                    className="text-base border-white/20 hover:border-white/30 focus-visible:border-primary focus-visible:ring-0 focus-visible:ring-offset-0"
                 />
             </div>
 
@@ -271,7 +271,8 @@ const EncodePanel = () => {
                 />
                 <Label htmlFor="enc-pass" className="flex items-center gap-2 cursor-pointer flex-1 text-base">
                     <i className="fas fa-key text-[#E5C890]"></i>
-                    Enable Password Encryption
+                    <span className="inline md:hidden">Password Encryption</span>
+                    <span className="hidden md:inline">Enable Password Encryption</span>
                 </Label>
             </div>
 
@@ -282,7 +283,7 @@ const EncodePanel = () => {
                         placeholder="Enter encryption password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="text-base"
+                        className="text-base border-white/20 hover:border-white/30 focus-visible:border-primary focus-visible:ring-0 focus-visible:ring-offset-0"
                     />
                 </div>
             )}
@@ -315,7 +316,9 @@ const EncodePanel = () => {
                         }`}>
                         <RadioGroupItem value="custom" id="r-custom" />
                         <Label htmlFor="r-custom" className="cursor-pointer flex-1">
-                            <i className="fas fa-edit mr-2 text-[#E5C890]"></i>Custom Text
+                            <i className="fas fa-edit mr-2 text-[#E5C890]"></i>
+                            <span className="inline md:hidden">Text</span>
+                            <span className="hidden md:inline">Custom Text</span>
                         </Label>
                     </div>
                 </RadioGroup>
@@ -352,7 +355,7 @@ const EncodePanel = () => {
                             <Button
                                 variant="outline"
                                 size="sm"
-                                className="shrink-0 hover:bg-primary/20 hover:border-primary transition-all"
+                                className="shrink-0 hover:bg-primary/20 hover:border-primary hover:text-white transition-all"
                                 onClick={() => {
                                     const emotionKeys = Object.keys(emotions);
                                     const currentIndex = emotionKeys.indexOf(selectedCategory);
@@ -372,7 +375,7 @@ const EncodePanel = () => {
                             <Button
                                 variant="outline"
                                 size="sm"
-                                className="shrink-0 hover:bg-primary/20 hover:border-primary transition-all"
+                                className="shrink-0 hover:bg-primary/20 hover:border-primary hover:text-white transition-all"
                                 onClick={() => {
                                     const newKaomojis = generateKaomojisForCategory(selectedCategory);
                                     setKaomojisForCategory(newKaomojis);
@@ -409,7 +412,7 @@ const EncodePanel = () => {
                         placeholder="e.g. 'Hey, see you later'"
                         value={customCarrier}
                         onChange={(e) => setCustomCarrier(e.target.value)}
-                        className="text-base"
+                        className="text-base border-white/20 hover:border-white/30 focus-visible:border-primary focus-visible:ring-0 focus-visible:ring-offset-0"
                     />
                 </div>
             )}

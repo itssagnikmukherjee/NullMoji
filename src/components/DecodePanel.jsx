@@ -71,7 +71,7 @@ const DecodePanel = () => {
                     placeholder="Paste text here..."
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    className="text-base resize-none"
+                    className="text-base resize-none border-white/20 hover:border-white/30 focus-visible:border-primary focus-visible:ring-0 focus-visible:ring-offset-0"
                 />
             </div>
 
@@ -96,7 +96,7 @@ const DecodePanel = () => {
                         placeholder="Enter decryption password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="text-base"
+                        className="text-base border-white/20 hover:border-white/30 focus-visible:border-primary focus-visible:ring-0 focus-visible:ring-offset-0"
                     />
                 </div>
             )}

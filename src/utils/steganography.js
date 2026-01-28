@@ -25,7 +25,18 @@ export function injectInvisible(carrier, binary) {
 }
 
 export function extractHiddenBinary(text) {
-    const invisibleChars = text.split('').filter(c => c === '\u200B' || c === '\u200C');
+    // Use Array.from to properly handle Unicode characters
+    const chars = Array.from(text);
+    const invisibleChars = chars.filter(c => c === '\u200B' || c === '\u200C');
+
     if (invisibleChars.length === 0) return null;
-    return invisibleChars.map(c => reverseMap[c]).join('');
+
+    const binary = invisibleChars.map(c => reverseMap[c]).join('');
+
+    // Validate that we have a complete binary (multiple of 8)
+    if (binary.length % 8 !== 0) {
+        console.warn('Incomplete binary data detected:', binary.length);
+    }
+
+    return binary;
 }
