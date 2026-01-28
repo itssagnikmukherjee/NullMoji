@@ -23,14 +23,15 @@ It encrypts your message and invisibly embeds it inside innocent-looking kaomoji
 # <a id="how"></a>How ? 🕵️‍♂️
 ![Image](https://github.com/user-attachments/assets/71f67465-1c49-4606-951a-779731a08c83)
 >NullMoji combines **AES Encryption** with **Zero-Width Steganography**
-### 🔁 The Pipeline 
-1.  **Encryption:** Your secret text (e.g., "Hi") is encrypted using `AES-256` with your password.
-2.  **Binary Conversion:** The encrypted string is converted into 8-bit binary (`010010...`).
-3.  **Invisible Mapping:**
-    * `0` ➔ `\u200B` (Zero Width Space)
-    * `1` ➔ `\u200C` (Zero Width Non-Joiner)
-4.  **Injection:** The string of invisible characters is inserted into the center of the carrier Kaomoji.
-   ### 👀 The Visual Proof
+### 🔁 The Pipeline
+1.  **Encryption:** Your secret text (e.g., "Hi") is encrypted using `AES-256` with your password.
+2.  **Binary Conversion:** The encrypted string is converted into 8-bit binary (`010010...`).
+3.  **Invisible Mapping:**
+    * `0` ➔ `\u200B` (Zero Width Space)
+    * `1` ➔ `\u200C` (Zero Width Non-Joiner)
+4.  **Injection:** The string of invisible characters is inserted into the center of the carrier Kaomoji.
+
+   ### 👀 The Visual Proof
 | Step | Data | Visual Output |
 | :--- | :--- | :--- |
 | **Input** | `Secret` | - |
