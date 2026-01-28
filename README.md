@@ -1,16 +1,71 @@
-# React + Vite
+<img width="200" height="200" alt="Image" src="https://github.com/user-attachments/assets/bf05a806-b482-40fe-8af4-f45b184306b5" align="left"/><br>
+- [What ? 🤷‍♂️](#what)  
+- [How ? 🕵️‍♂️](#how)  
+- [Setup ⚙️](#setup)
+- [Credits 🙏](#credits)  
+- [License 📜](#license)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<img width="1101" height="911" alt="image" src="https://github.com/user-attachments/assets/167bb870-1f82-4f00-8ab3-a06f37bd2f78" />
 
-Currently, two official plugins are available:
+# <a id="what"></a>What ? 🤷‍♂️
+**NullMoji** is stealth for the modern web.
+It encrypts your message and invisibly embeds it inside innocent-looking kaomojis (or any text) using zero-width characters.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+>To humans, it’s just text.
+>To NullMoji, it’s a hidden, encrypted payload 👁️‍🗨️
 
-## React Compiler
+## 🚀 Key Features
+* **🔒 Military-Grade Encryption:** Optional AES encryption ensures that even if the text is detected, it cannot be read without the secret password
+* **👻 Zero-Width Steganography:** Hides data using Unicode characters that do not render on screen
+* **📚 Kaomoji Library:** Built-in picker with categories (Thinking, Joy, Love, etc.) to find the perfect carrier
+* **⚡ Client-Side Only:** All encryption and processing happens in your browser. No data is ever sent to server
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# <a id="how"></a>How ? 🕵️‍♂️
+![Image](https://github.com/user-attachments/assets/71f67465-1c49-4606-951a-779731a08c83)
+>NullMoji combines **AES Encryption** with **Zero-Width Steganography**
+### 🔁 The Pipeline 
+1.  **Encryption:** Your secret text (e.g., "Hi") is encrypted using `AES-256` with your password.
+2.  **Binary Conversion:** The encrypted string is converted into 8-bit binary (`010010...`).
+3.  **Invisible Mapping:**
+    * `0` ➔ `\u200B` (Zero Width Space)
+    * `1` ➔ `\u200C` (Zero Width Non-Joiner)
+4.  **Injection:** The string of invisible characters is inserted into the center of the carrier Kaomoji.
+   ### 👀 The Visual Proof
+| Step | Data | Visual Output |
+| :--- | :--- | :--- |
+| **Input** | `Secret` | - |
+| **Carrier** | `(^_^)` | `(^_^)` |
+| **Result** | `(^` + `[Invisible Payload]` + `_^)` | **`(^_^)`** |
 
-## Expanding the ESLint configuration
+## <a id="setup"></a>Setup ⚙️
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/itssagnikmukherjee/NullMoji.git
+    cd NullMoji
+    ```
+
+2.  **Install dependencies**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+
+3.  **Run the development server**
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    ```
+
+4.  Open `http://localhost:5173` in your browser.
+
+---
+## <a id="credits"></a>Credits 🙏
+* [Kaomoji](https://kaomoji.ru/en/) — For the endless library of expressions.
+* [shadcn/ui](https://ui.shadcn.com/) — For the razor-sharp, "coolest" UI architecture.
+* [React Bits](https://reactbits.dev/) — For the awesome interactive component magic.
+
+## <a id="license"></a>License 📜
+Distributed under the MIT License. See `LICENSE` for more information
