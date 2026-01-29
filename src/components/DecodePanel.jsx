@@ -55,6 +55,16 @@ const DecodePanel = () => {
             setResultType('success');
         }
 
+        const hasGarbledOutput = /^[yÿ]+$/i.test(finalMessage) ||
+            /^[\u00ff]+$/i.test(finalMessage) || finalMessage.includes('ÿ') || /^[y]{2,}$/i.test(finalMessage);
+
+        if (hasGarbledOutput) {
+            localStorage.setItem('nullmoji-tab', 'decode');
+            setResult("99.99% there, refresh & try again");
+            setResultType('info');
+            return;
+        }
+
         setResult(finalMessage);
     };
 
@@ -73,7 +83,7 @@ const DecodePanel = () => {
                     autoComplete="off"
                     autoCorrect="off"
                     autoCapitalize="off"
-                    spellCheck="false" 
+                    spellCheck="false"
                     data-form-type="other"
                     onChange={(e) => setInput(e.target.value)}
                     className="text-base resize-none border-white/20 hover:border-white/30 focus-visible:border-primary focus-visible:ring-0 focus-visible:ring-offset-0"
@@ -116,11 +126,13 @@ const DecodePanel = () => {
                     ${resultType === 'error' ? 'border-red-500/50 text-red-400 bg-red-500/10' : ''}
                     ${resultType === 'warning' ? 'border-yellow-500/50 text-yellow-400 bg-yellow-500/10' : ''}
                     ${resultType === 'success' ? 'border-green-500/50 text-green-400 bg-green-500/10' : ''}
+                    ${resultType === 'info' ? 'border-blue-500/50 text-blue-400 bg-blue-500/10' : ''}
                 `}>
                     <div className="flex items-center justify-center gap-2 mb-2">
                         {resultType === 'error' && <i className="fas fa-circle-exclamation text-xl"></i>}
                         {resultType === 'warning' && <i className="fas fa-triangle-exclamation text-xl"></i>}
                         {resultType === 'success' && <i className="fas fa-circle-check text-xl"></i>}
+                        {resultType === 'info' && <i className="fas fa-circle-info text-xl"></i>}
                     </div>
                     {resultType === 'success' ? (
                         <DecryptedText

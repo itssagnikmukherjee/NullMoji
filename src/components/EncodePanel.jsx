@@ -350,7 +350,7 @@ const EncodePanel = () => {
                                 </Button>
                             ))}
                         </div>
-                        <div className="flex gap-2 ml-auto">
+                        <div className="flex gap-2 ml-auto mb-2">
                             {/* Scroll to Next Emotion Button */}
                             <Button
                                 variant="outline"
@@ -409,7 +409,7 @@ const EncodePanel = () => {
                 <div className="animate-fadeIn transition-all duration-300 ease-in-out overflow-hidden">
                     <Input
                         type="text"
-                        placeholder="e.g. 'Hey, see you later'"
+                        placeholder="text you want to share"
                         value={customCarrier}
                         onChange={(e) => setCustomCarrier(e.target.value)}
                         className="text-base border-white/20 hover:border-white/30 focus-visible:border-primary focus-visible:ring-0 focus-visible:ring-offset-0"

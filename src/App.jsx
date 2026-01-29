@@ -18,6 +18,14 @@ function App() {
   const [howWorksOpen, setHowWorksOpen] = useState(false);
   const [showMoji, setShowMoji] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState(() => {
+    const savedTab = localStorage.getItem('nullmoji-tab');
+    if (savedTab) {
+      localStorage.removeItem('nullmoji-tab');
+      return savedTab;
+    }
+    return 'encode';
+  });
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -223,12 +231,12 @@ function App() {
           <Card className="border border-border/50 bg-card/40 backdrop-blur-xl shadow-2xl" style={{
             boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1)'
           }}>
-            <Tabs defaultValue="encode" className="w-full">
-              <div className="border-b border-border/50 bg-muted/10 backdrop-blur-sm">
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+              <div className="border-b border-border/50 bg-muted/10 backdrop-blur-sm overflow-hidden rounded-t-lg">
                 <TabsList className="grid w-full grid-cols-2 bg-transparent p-0">
                   <TabsTrigger
                     value="encode"
-                    className="rounded-t-lg rounded-b-none border-b-2 border-transparent px-4 py-3 transition-all duration-300 data-[state=active]:border-primary data-[state=active]:bg-card/60 data-[state=active]:text-primary data-[state=active]:shadow-lg data-[state=active]:shadow-primary/20 hover:bg-muted/20"
+                    className="rounded-none border-b-2 border-transparent px-4 py-3 transition-all duration-300 data-[state=active]:border-primary data-[state=active]:bg-card/60 data-[state=active]:text-primary data-[state=active]:shadow-lg data-[state=active]:shadow-primary/20 hover:bg-muted/20"
                   >
                     <span className="font-semibold flex items-center gap-2">
                       <i className="fas fa-code text-[#E5C890]"></i>
@@ -237,7 +245,7 @@ function App() {
                   </TabsTrigger>
                   <TabsTrigger
                     value="decode"
-                    className="rounded-t-lg rounded-b-none border-b-2 border-transparent px-4 py-3 transition-all duration-300 data-[state=active]:border-primary data-[state=active]:bg-card/60 data-[state=active]:text-primary data-[state=active]:shadow-lg data-[state=active]:shadow-primary/20 hover:bg-muted/20"
+                    className="rounded-none border-b-2 border-transparent px-4 py-3 transition-all duration-300 data-[state=active]:border-primary data-[state=active]:bg-card/60 data-[state=active]:text-primary data-[state=active]:shadow-lg data-[state=active]:shadow-primary/20 hover:bg-muted/20"
                   >
                     <span className="font-semibold flex items-center gap-2">
                       <i className="fas fa-file-code text-[#E5C890]"></i>
